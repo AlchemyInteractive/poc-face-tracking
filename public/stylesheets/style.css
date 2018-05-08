@@ -42,8 +42,9 @@ body {
 
 #left-eye-box,
 #right-eye-box,
-#skin-tone-box {
-  width: 20px;
+#skin-tone-box,
+#hair-box {
+  width: 100px;
   height: 20px;
   background-color: white;
 }
