@@ -6,8 +6,45 @@
     <script src="javascripts/clmtrackr.js"></script>
   </head>
   <body>
+    <!-- CONTENT -->
+    <div id="content">
+			<h2>Face tracking in images</h2>
+			<div id="container">
+				<canvas id="image" width="400" height="400"></canvas>
+				<canvas id="overlay" width="400" height="400"></canvas>
+			</div>
+      <div id='stats'>
+        <div class='stat'>
+          <p>Left eye:</p>
+          <p id='left-eye'></p>
+          <p id='left-eye-box'></p>
+        </div>
+        <div class='stat'>
+          <p>Right eye:</p>
+          <p id='right-eye'></p>
+          <p id='right-eye-box'></p>
+        </div>
+        <div class='stat'>
+          <p>Hair Color:</p>
+          <p id='hair'></p>
+          <p id='hair-box'></p>
+        </div>
+        <div class='stat'>
+          <p>Skin Tone:</p>
+          <p id='skin-tone'></p>
+          <p id='skin-tone-box'></p>
+        </div>
+      </div>
+      <br/>
+			<input type="button" class="btn" value="start" onclick="animateClean()"></input>
+			<input type="file" class="btn" id="files" name="files[]" />
+			<p id="convergence"></p>
 
-
-
+      <!-- JS SCRIPTS -->
+      <script src="/javascripts/utils.js"></script>
+  		<script src="/javascripts/jquery.min.js"></script>
+      <script src="/javascripts/clmtrackr.js"></script>
+      <script src="/javascripts/functions.js"></script>
+    </div>
   </body>
 </html>
