@@ -7,11 +7,15 @@
   <body>
     <!-- CONTENT -->
     <div id="content">
-			<h2>Face tracking in images</h2>
-			<div id="container">
-				<canvas id="image" width="400" height="400"></canvas>
-				<canvas id="overlay" width="400" height="400"></canvas>
-			</div>
+      <div id="container">
+        <video id="videoel" width="400" height="300" preload="auto" loop playsinline autoplay>
+        </video>
+        <canvas id="overlay" width="400" height="300"></canvas>
+        <canvas id="image" width="400" height="300"></canvas>
+      </div>
+      <br/>
+      <input class="btn" type="button" value="wait, loading video" disabled="disabled" onclick="snapShot()" id="startbutton"></input>
+
       <div id='stats'>
         <div class='stat'>
           <p>Left eye:</p>
@@ -35,15 +39,11 @@
         </div>
       </div>
       <br/>
-			<input type="button" class="btn" value="start" onclick="animateClean()"></input>
-			<input type="file" class="btn" id="files" name="files[]" />
-			<p id="convergence"></p>
-
-      <!-- JS SCRIPTS -->
-      <script src="/javascripts/utils.js"></script>
-  		<script src="/javascripts/jquery.min.js"></script>
-      <script src="/javascripts/clmtrackr.js"></script>
-      <script src="/javascripts/functions.js"></script>
     </div>
+      <!-- JS SCRIPTS -->
+      <script src="/javascripts/libs/utils.js"></script>
+  		<script src="/javascripts/libs/jquery.min.js"></script>
+      <script src="/javascripts/libs/clmtrackr.js"></script>
+      <script src="/javascripts/functions.js"></script>
   </body>
 </html>
