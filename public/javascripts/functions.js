@@ -32,14 +32,14 @@ function drawLoop() {
       document.getElementById('skin-tone').innerHTML = skinToneColor;
       document.getElementById('skin-tone-box').style.backgroundColor = skinToneColor;
     // Left Eye
-      var leftEyeData = cc.getImageData(positions[27][0], positions[27][1] + 4, 1, 1).data;
+      var leftEyeData = cc.getImageData(positions[27][0], (positions[27][1] + positions[26][1]) / 2, 1, 1).data;
       var leftEyeColor = `rgba(${leftEyeData[0]}, ${leftEyeData[1]}, ${leftEyeData[2]}, ${leftEyeData[3]})`;
       // set left eye background color and html
       document.getElementById('left-eye').innerHTML = leftEyeColor;
       document.getElementById('left-eye-box').style.backgroundColor = leftEyeColor;
 
     // Right Eye
-      var rightEyeData = cc.getImageData(positions[32][0], positions[32][1] + 4, 1, 1).data;
+      var rightEyeData = cc.getImageData(positions[32][0], (positions[31][1] + positions[26][1]) / 2, 1, 1).data;
       var rightEyeColor = `rgba(${rightEyeData[0]}, ${rightEyeData[1]}, ${rightEyeData[2]}, ${rightEyeData[3]})`;
       // set right eye background color and html
       document.getElementById('right-eye').innerHTML = rightEyeColor;
