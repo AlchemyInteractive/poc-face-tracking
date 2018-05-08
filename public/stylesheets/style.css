@@ -7,24 +7,39 @@ body {
   margin: 0px auto;
   max-width: 1150px;
 }
+
+#videoel {
+  position: absolute;
+}
+
 #overlay {
   position: absolute;
   top: 0px;
   left: 0px;
   height : auto;
 }
+
+#image {
+  position: relative;
+  left: 415px;
+  top: 0;
+  width: 400px;
+}
+
 #container {
   position : relative;
   width : auto;
   height : auto;
   margin : 0px auto;
 }
+
 #content {
   margin-top : 70px;
   margin-left : 100px;
   margin-right : 100px;
   max-width: 950px;
 }
+
 #convergence {
   display : inline;
 }
@@ -58,5 +73,3 @@ h2 {
 .hide {
   display : none;
 }
-
-/*# sourceMappingURL=style.css.map */
