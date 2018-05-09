@@ -14,9 +14,17 @@ body {
 
 #overlay {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  height : auto;
+  top: 0;
+  left: 0;
+  height: auto;
+}
+
+#image-overlay {
+  position: absolute;
+  top: 0;
+  left: 415px;
+  height: auto;
+  z-index: 2;
 }
 
 #image {
@@ -24,6 +32,7 @@ body {
   left: 415px;
   top: 0;
   width: 400px;
+  z-index: 1;
 }
 
 #container {
