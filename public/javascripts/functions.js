@@ -198,7 +198,16 @@ function drawLoop() {
   requestAnimFrame(drawLoop);
   overlayCC.clearRect(0, 0, vid_width, vid_height);
   //psrElement.innerHTML = "score :" + ctrack.getScore().toFixed(4);
-  if (ctrack.getCurrentPosition()) {
+  var pos = ctrack.getCurrentPosition();
+  if (pos) {
+      var lipTop = Math.floor(pos[60][1]);
+      var lipBot = Math.floor(pos[57][1]);
+      var lipDiff = Math.abs(lipBot - lipTop);
+      var mouthPos = 'Closed';
+      if (lipDiff >= 4) {
+        mouthPos = 'Open';
+      }
+    document.getElementById('mouth').innerHTML = mouthPos;
     ctrack.draw(overlay);
   }
 }
