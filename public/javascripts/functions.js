@@ -204,7 +204,7 @@ function drawLoop() {
       var lipBot = Math.floor(pos[57][1]);
       var lipDiff = Math.abs(lipBot - lipTop);
       var mouthPos = 'Closed';
-      if (lipDiff >= 3) {
+      if (lipDiff >= 4) {
         mouthPos = 'Open';
       }
     document.getElementById('mouth').innerHTML = mouthPos;
