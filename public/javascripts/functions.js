@@ -34,15 +34,11 @@ function drawImageLoop() {
   if (positions) {
     // Skin Tone
       // left brow points
-      // var leftBrowPoint1 = cc.getImageData(positions[19][0], positions[19][1], 1, 1).data;
       var leftBrowPoint2 = cc.getImageData(positions[20][0], positions[20][1], 1, 1).data;
       var leftBrowPoint3 = cc.getImageData(positions[21][0], positions[21][1], 1, 1).data;
-      // var leftBrowPoint4 = cc.getImageData(positions[22][0], positions[22][1], 1, 1).data;
       // right brow points
-      // var rightBrowPoint1 = cc.getImageData(positions[15][0], positions[15][1], 1, 1).data;
       var rightBrowPoint2 = cc.getImageData(positions[16][0], positions[16][1], 1, 1).data;
       var rightBrowPoint3 = cc.getImageData(positions[17][0], positions[17][1], 1, 1).data;
-      // var rightBrowPoint4 = cc.getImageData(positions[18][0], positions[18][1], 1, 1).data;
 
       var r = averageColor([leftBrowPoint2[0], leftBrowPoint3[0], rightBrowPoint2[0], rightBrowPoint3[0]]);
       var g = averageColor([leftBrowPoint2[1], leftBrowPoint3[1], rightBrowPoint2[1], rightBrowPoint3[1]]);
