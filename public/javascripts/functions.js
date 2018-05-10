@@ -116,8 +116,9 @@ function drawImageLoop() {
 
 // detect if tracker has converged
 document.addEventListener("clmtrackrConverged", function(event) {
-  document.getElementById('convergence').innerHTML = "READY";
+  document.getElementById('convergence').innerHTML = "";
   document.getElementById('convergence').style.backgroundColor = "#00FF00";
+  document.getElementById('btnWrapper').style.display = "block";
   // stop drawloop
   cancelRequestAnimFrame(drawRequest);
 }, false);
@@ -267,7 +268,7 @@ function snapShot(){
   image.setAttribute('src', imageDataURL);
 
   // Apply saturation to hidden image
-  ctx.filter = "saturate(180%)";
+  ctx.filter = "saturate(190%)";
   ctx.globalCompositeOperation = "copy";
   ctx.drawImage(ctx.canvas,0,0);
   image2.setAttribute('src', imageDataURL2);

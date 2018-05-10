@@ -58,10 +58,6 @@ body {
   max-width: 950px;
 }
 
-#convergence {
-  display : none;
-}
-
 #stats {
   display: flex;
   flex-direction: row;
@@ -131,7 +127,7 @@ h2 {
     align-items: center;
   }
 
-  .btnWrapper {
+  #btnWrapper {
     -webkit-appearance: none;
     width: 250px;
     height: 250px;
@@ -140,6 +136,7 @@ h2 {
     border: 9px solid #fff;
     margin: 0 auto;
     position: relative;
+    display: none;
   }
 
   #startbutton {
@@ -153,6 +150,7 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
+
   }
 
   #stats {
