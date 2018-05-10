@@ -30,6 +30,27 @@ function averageColor(array) {
   return Math.floor(sum / array.length);
 }
 
+/**** Rules for Color Returns
+• If all RGB values are less than 40 Color is assumed Black
+• If all RGB values are more than 225 Color is assumed white
+• If "B" value in RGB is larger than both R&G values --> Eye is blue
+• If "G" value in RGB is larger than both B&R values --> Eye is green
+• If "R" value is larger than both B&G values --> Eye is brown
+****/
+function colorDetect(r, g, b) {
+  var eyeColor = 'rgb(101,67,33)';
+
+  if (b > r && b > g) {
+    eyeColor = 'rgb(12,56,100)';
+  }
+
+  if (g > r && g > b) {
+    eyeColor = 'rgb(13,55,13)';
+  }
+
+  return eyeColor;
+}
+
 function drawImageLoop() {
   var positions = ctrackImage.getCurrentPosition();
   drawRequest = requestAnimFrame(drawImageLoop);
@@ -82,7 +103,8 @@ function drawImageLoop() {
       var r = averageColor(rArrayLeft);
       var g = averageColor(gArrayLeft);
       var b = averageColor(bArrayLeft);
-      var leftEyeColor = `rgb(${r}, ${g}, ${b})`;
+      var leftEyeColor = colorDetect(r, g, b);
+
       // set left eye background color and html
       document.getElementById('left-eye').innerHTML = leftEyeColor;
       document.getElementById('left-eye-box').style.backgroundColor = leftEyeColor;
@@ -106,7 +128,7 @@ function drawImageLoop() {
     var r = averageColor(rArrayRight);
     var g = averageColor(gArrayRight);
     var b = averageColor(bArrayRight);
-    var rightEyeColor = `rgb(${r}, ${g}, ${b})`;
+    var rightEyeColor = colorDetect(r, g, b);
     // set right eye background color and html
     document.getElementById('right-eye').innerHTML = rightEyeColor;
     document.getElementById('right-eye-box').style.backgroundColor = rightEyeColor;
@@ -268,11 +290,11 @@ function snapShot(){
   image.setAttribute('src', imageDataURL);
 
   // Apply saturation to hidden image
-  ctx.filter = "saturate(190%)";
+  ctx.filter = "saturate(180%)";
   ctx.globalCompositeOperation = "copy";
   ctx.drawImage(ctx.canvas,0,0);
   image2.setAttribute('src', imageDataURL2);
 
   // calculation feature colors and image overlay
-  animateClean();
+  setTimeout(animateClean(), 3000);
 }
