@@ -15,31 +15,39 @@
         <canvas id="image" width="400" height="300"></canvas>
       </div>
       <br/>
-      <input class="btn" type="button" value="wait, loading video" disabled="disabled" onclick="snapShot()" id="startbutton"></input>
-			<p id="convergence"></p>
+      <div class='submit'>
+        <div class='btnWrapper'>
+          <input class="btn" type="button" disabled="disabled" onclick="snapShot()" id="startbutton"></input>
+        </div>
+        <p id="convergence"></p>
+      </div>
 
       <div id='stats'>
-        <div class='stat'>
-          <p>Left eye:</p>
-          <p id='left-eye'></p>
-          <p id='left-eye-box'></p>
+        <div class='row'>
+          <div class='stat'>
+            <p>Left eye:</p>
+            <p id='left-eye'></p>
+            <p id='left-eye-box'></p>
+          </div>
+          <div class='stat'>
+            <p>Right eye:</p>
+            <p id='right-eye'></p>
+            <p id='right-eye-box'></p>
+          </div>
         </div>
-        <div class='stat'>
-          <p>Right eye:</p>
-          <p id='right-eye'></p>
-          <p id='right-eye-box'></p>
+        <div class='row'>
+          <div class='stat'>
+            <p>Hair Color:</p>
+            <p id='hair'></p>
+            <p id='hair-box'></p>
+          </div>
+          <div class='stat'>
+            <p>Skin Tone:</p>
+            <p id='skin-tone'></p>
+            <p id='skin-tone-box'></p>
+          </div>
         </div>
-        <div class='stat'>
-          <p>Hair Color:</p>
-          <p id='hair'></p>
-          <p id='hair-box'></p>
-        </div>
-        <div class='stat'>
-          <p>Skin Tone:</p>
-          <p id='skin-tone'></p>
-          <p id='skin-tone-box'></p>
-        </div>
-        <div class='stat'>
+        <div class='row'>
           <p>Mouth:</p>
           <p id='mouth'></p>
         </div>
