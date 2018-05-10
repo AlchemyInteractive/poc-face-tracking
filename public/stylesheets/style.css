@@ -44,6 +44,8 @@ body {
 #image {
   width: 400px;
   height: 300px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 #container {
