@@ -2,10 +2,11 @@ a {
   color: #00B7FF; }
 
 body {
-  font-family: 'Lato';
-  background-color: #f0f0f0;
+  font-family: 'Open Sans';
+  background-color: #fff;
   margin: 0px auto;
   max-width: 1150px;
+  -webkit-appearance: none;
 }
 
 #videoel {
@@ -16,14 +17,12 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  height: auto;
 }
 
 #image-overlay {
   position: absolute;
   top: 0;
   left: 415px;
-  height: auto;
   z-index: 2;
 }
 
@@ -31,8 +30,15 @@ body {
   position: relative;
   left: 415px;
   top: 0;
-  width: 400px;
   z-index: 1;
+}
+
+#videoel,
+#overlay,
+#image-overlay,
+#image {
+  width: 400px;
+  height: 300px;
 }
 
 #container {
@@ -44,13 +50,11 @@ body {
 
 #content {
   margin-top : 70px;
-  margin-left : 100px;
-  margin-right : 100px;
   max-width: 950px;
 }
 
 #convergence {
-  display : inline;
+  display : none;
 }
 
 #stats {
@@ -62,6 +66,15 @@ body {
   display: inline;
   margin-right: 20px;
   width: 150px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+#mouth {
+  margin-left: 10px;
 }
 
 #left-eye-box,
@@ -76,10 +89,113 @@ body {
 h2 {
   font-weight : 400;
 }
+
 .btn {
   font-family: 'Lato';
   font-size: 16px;
 }
+
 .hide {
   display : none;
+}
+
+@media only screen and (max-width: 1023px) {
+
+  #videoel,
+  #overlay,
+  #image {
+    width: 50%;
+    height: 600px;
+  }
+
+  #image-overlay,
+  #image {
+    left: 50%;
+  }
+
+  #image-overlay {
+    width: 90%;
+    height: 100%;
+  }
+
+  .submit {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btnWrapper {
+    -webkit-appearance: none;
+    width: 250px;
+    height: 250px;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 150px;
+    border: 9px solid #fff;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  #startbutton {
+    -webkit-appearance: none;
+    width: 150px;
+    height: 150px;
+    background-color: #D3000C;
+    color: #D3000C;
+    border-radius: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
+
+  #stats {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .stat {
+    width: 100%;
+  }
+
+  .inlineStat {
+    width: 100%;
+    display: flex;
+
+  }
+
+  #left-eye-box,
+  #right-eye-box,
+  #skin-tone-box,
+  #hair-box {
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  #left-eye,
+  #right-eye,
+  #skin-tone,
+  #hair {
+    display: none;
+  }
+
+  p {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  #mouth {
+    margin-left: 50px;
+  }
 }
