@@ -269,7 +269,6 @@ function snapShot(){
 
   // Apply saturation to hidden image
   ctx.filter = "saturate(190%)";
-  ctx.filter = "brightness(30%)";
   ctx.globalCompositeOperation = "copy";
   ctx.drawImage(ctx.canvas,0,0);
   image2.setAttribute('src', imageDataURL2);
