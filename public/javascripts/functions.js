@@ -1,9 +1,11 @@
 var cc = document.getElementById('image').getContext('2d');
+var ccFilter = document.getElementById('image2').getContext('2d');
 var overlay = document.getElementById('overlay');
 var overlayCC = overlay.getContext('2d');
 var imageOverlay = document.getElementById('image-overlay');
 var overlayCCImg = imageOverlay.getContext('2d');
-
+var image2Overlay = document.getElementById('image-overlay2');
+var overlayCCImg2 = image2Overlay.getContext('2d');
 // tracking for head motion
 var ctrack = new clm.tracker();
 ctrack.init();
@@ -18,6 +20,7 @@ function animateClean() {
   ctrackImage.start(document.getElementById('image'));
   if (ctrack.getCurrentPosition()) {
     ctrack.draw(imageOverlay);
+    ctrack.draw(image2Overlay);
   }
   drawImageLoop();
 }
@@ -43,6 +46,7 @@ function drawImageLoop() {
       var r = averageColor([leftBrowPoint2[0], leftBrowPoint3[0], rightBrowPoint2[0], rightBrowPoint3[0]]);
       var g = averageColor([leftBrowPoint2[1], leftBrowPoint3[1], rightBrowPoint2[1], rightBrowPoint3[1]]);
       var b = averageColor([leftBrowPoint2[2], leftBrowPoint3[2], rightBrowPoint2[2], rightBrowPoint3[2]]);
+
       var hairColor = `rgb(${r}, ${g}, ${b})`;
       // set right eye background color and html
       document.getElementById('hair').innerHTML = hairColor;
@@ -61,11 +65,11 @@ function drawImageLoop() {
       document.getElementById('skin-tone-box').style.backgroundColor = skinToneColor;
     // Left Eye
       // data points
-      var leftEyePoint1 = cc.getImageData(positions[27][0], (positions[27][1] + positions[26][1]) / 2, 1, 1).data;
-      var leftEyePoint2 = cc.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) + 2, 1, 1).data;
-      var leftEyePoint3 = cc.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) + 1, 1, 1).data;
-      var leftEyePoint4 = cc.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) - 2, 1, 1).data;
-      var leftEyePoint5 = cc.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) - 1, 1, 1).data;
+      var leftEyePoint1 = ccFilter.getImageData(positions[27][0], (positions[27][1] + positions[26][1]) / 2, 1, 1).data;
+      var leftEyePoint2 = ccFilter.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) + 2, 1, 1).data;
+      var leftEyePoint3 = ccFilter.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) + 1, 1, 1).data;
+      var leftEyePoint4 = ccFilter.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) - 2, 1, 1).data;
+      var leftEyePoint5 = ccFilter.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) - 1, 1, 1).data;
       // rgb averages
       var r = averageColor([leftEyePoint1[0], leftEyePoint2[0], leftEyePoint3[0], leftEyePoint4[0], leftEyePoint5[0]]);
       var g = averageColor([leftEyePoint1[1], leftEyePoint2[1], leftEyePoint3[1], leftEyePoint4[1], leftEyePoint5[1]]);
@@ -77,11 +81,11 @@ function drawImageLoop() {
 
     // Right Eye
       // data points
-      var rightEyePoint1 = cc.getImageData(positions[32][0], (positions[32][1] + positions[31][1]) / 2, 1, 1).data;
-      var rightEyePoint2 = cc.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) + 2, 1, 1).data;
-      var rightEyePoint3 = cc.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) + 1, 1, 1).data;
-      var rightEyePoint4 = cc.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) - 2, 1, 1).data;
-      var rightEyePoint5 = cc.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) - 1, 1, 1).data;
+      var rightEyePoint1 = ccFilter.getImageData(positions[32][0], (positions[32][1] + positions[31][1]) / 2, 1, 1).data;
+      var rightEyePoint2 = ccFilter.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) + 2, 1, 1).data;
+      var rightEyePoint3 = ccFilter.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) + 1, 1, 1).data;
+      var rightEyePoint4 = ccFilter.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) - 2, 1, 1).data;
+      var rightEyePoint5 = ccFilter.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) - 1, 1, 1).data;
       // rgb averages
       var r = averageColor([rightEyePoint1[0], rightEyePoint2[0], rightEyePoint3[0], rightEyePoint4[0], rightEyePoint5[0]]);
       var g = averageColor([rightEyePoint1[1], rightEyePoint2[1], rightEyePoint3[1], rightEyePoint4[1], rightEyePoint5[1]]);
@@ -216,28 +220,41 @@ startVideo()
 
 function snapShot(){
   var hidden_canvas = document.querySelector('canvas#image'),
+  hidden_canvas2 = document.querySelector('canvas#image2'),
   video = document.getElementById('videoel'),
   image =  document.getElementById('image'),
+  image2 =  document.getElementById('image2'),
   vidBlock = document.querySelector('video')
 
   // Get the size of the video.
   width = video.videoWidth,
   height = video.videoHeight,
   context = hidden_canvas.getContext('2d');
+  ctx = hidden_canvas2.getContext('2d');
 
   // Set the canvas to the same dimensions as the video.
   hidden_canvas.width = width;
   hidden_canvas.height = height;
+  hidden_canvas2.width = width;
+  hidden_canvas2.height = height;
 
   // Draw a copy of the current frame from the video on the canvas.
   context.drawImage(video, 0, 0, width, height);
+  ctx.drawImage(video, 0, 0, width, height);
   overlayCCImg.clearRect(0, 0, width, height);
+  overlayCCImg2.clearRect(0, 0, width, height);
 
   // Get an image dataURL from the canvas.
   var imageDataURL = hidden_canvas.toDataURL('image/png');
-
-  // Set the dataURL as source of an image element, showing the captured photo.
+  var imageDataURL2 = hidden_canvas2.toDataURL('image/png');
   image.setAttribute('src', imageDataURL);
+
+  // Apply saturation to hidden image
+  ctx.filter = "saturate(180%)";
+  ctx.globalCompositeOperation = "copy";
+  ctx.drawImage(ctx.canvas,0,0);
+  image2.setAttribute('src', imageDataURL2);
+
   // calculation feature colors and image overlay
   animateClean();
 }

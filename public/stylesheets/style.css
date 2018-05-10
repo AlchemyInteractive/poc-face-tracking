@@ -35,6 +35,11 @@ body {
   z-index: 1;
 }
 
+#image2,
+#image-overlay2 {
+  display: none;
+}
+
 #container {
   position : relative;
   width : auto;
