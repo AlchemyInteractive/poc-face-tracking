@@ -49,8 +49,8 @@ function drawImageLoop() {
 
       var hairColor = `rgb(${r}, ${g}, ${b})`;
       // set right eye background color and html
-      document.getElementById('hair').innerHTML = hairColor;
-      document.getElementById('hair-box').style.backgroundColor = hairColor;
+      // document.getElementById('hair').innerHTML = hairColor;
+      // document.getElementById('hair-box').style.backgroundColor = hairColor;
     // Skin Tone
       var skinTonePoint1 = cc.getImageData(positions[33][0], positions[33][1], 1, 1).data;
       var skinTonePoint2 = cc.getImageData(positions[41][0], positions[41][1], 1, 1).data;
@@ -65,35 +65,52 @@ function drawImageLoop() {
       document.getElementById('skin-tone-box').style.backgroundColor = skinToneColor;
     // Left Eye
       // data points
-      var leftEyePoint1 = ccFilter.getImageData(positions[27][0], (positions[27][1] + positions[26][1]) / 2, 1, 1).data;
-      var leftEyePoint2 = ccFilter.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) + 2, 1, 1).data;
-      var leftEyePoint3 = ccFilter.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) + 1, 1, 1).data;
-      var leftEyePoint4 = ccFilter.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) - 2, 1, 1).data;
-      var leftEyePoint5 = ccFilter.getImageData(positions[27][0], ((positions[27][1] + positions[26][1]) / 2) - 1, 1, 1).data;
+      var rArrayLeft = [],
+          gArrayLeft = [],
+          bArrayLeft = [];
+
+      for (var i = 0; i < 5; i++) {
+        var up = ccFilter.getImageData(positions[27][0], positions[27][1] + i, 1, 1).data;
+        var down = ccFilter.getImageData(positions[27][0], positions[27][1] - i, 1, 1).data;
+        var left = ccFilter.getImageData(positions[27][0] + i, positions[27][1], 1, 1).data;
+        var right = ccFilter.getImageData(positions[27][0] - i, positions[27][1], 1, 1).data;
+        rArrayLeft.push(...[up[0], down[0], left[0], right[0]]);
+        gArrayLeft.push(...[up[1], down[1], left[1], right[1]]);
+        bArrayLeft.push(...[up[2], down[2], left[2], right[2]]);
+      }
       // rgb averages
-      var r = averageColor([leftEyePoint1[0], leftEyePoint2[0], leftEyePoint3[0], leftEyePoint4[0], leftEyePoint5[0]]);
-      var g = averageColor([leftEyePoint1[1], leftEyePoint2[1], leftEyePoint3[1], leftEyePoint4[1], leftEyePoint5[1]]);
-      var b = averageColor([leftEyePoint1[2], leftEyePoint2[2], leftEyePoint3[2], leftEyePoint4[2], leftEyePoint5[2]]);
+      var r = averageColor(rArrayLeft);
+      var g = averageColor(gArrayLeft);
+      var b = averageColor(bArrayLeft);
       var leftEyeColor = `rgb(${r}, ${g}, ${b})`;
       // set left eye background color and html
       document.getElementById('left-eye').innerHTML = leftEyeColor;
       document.getElementById('left-eye-box').style.backgroundColor = leftEyeColor;
 
     // Right Eye
-      // data points
-      var rightEyePoint1 = ccFilter.getImageData(positions[32][0], (positions[32][1] + positions[31][1]) / 2, 1, 1).data;
-      var rightEyePoint2 = ccFilter.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) + 2, 1, 1).data;
-      var rightEyePoint3 = ccFilter.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) + 1, 1, 1).data;
-      var rightEyePoint4 = ccFilter.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) - 2, 1, 1).data;
-      var rightEyePoint5 = ccFilter.getImageData(positions[32][0], ((positions[32][1] + positions[31][1]) / 2) - 1, 1, 1).data;
-      // rgb averages
-      var r = averageColor([rightEyePoint1[0], rightEyePoint2[0], rightEyePoint3[0], rightEyePoint4[0], rightEyePoint5[0]]);
-      var g = averageColor([rightEyePoint1[1], rightEyePoint2[1], rightEyePoint3[1], rightEyePoint4[1], rightEyePoint5[1]]);
-      var b = averageColor([rightEyePoint1[2], rightEyePoint2[2], rightEyePoint3[2], rightEyePoint4[2], rightEyePoint5[2]]);
-      var rightEyeColor = `rgb(${r}, ${g}, ${b})`;
-      // set right eye background color and html
-      document.getElementById('right-eye').innerHTML = rightEyeColor;
-      document.getElementById('right-eye-box').style.backgroundColor = rightEyeColor;
+    // data points
+    var rArrayRight = [],
+        gArrayRight = [],
+        bArrayRight = [];
+
+    for (var i = 0; i < 5; i++) {
+      var up = ccFilter.getImageData(positions[32][0], positions[32][1] + i, 1, 1).data;
+      var down = ccFilter.getImageData(positions[32][0], positions[32][1] - i, 1, 1).data;
+      var left = ccFilter.getImageData(positions[32][0] + i, positions[32][1], 1, 1).data;
+      var right = ccFilter.getImageData(positions[32][0] - i, positions[32][1], 1, 1).data;
+      rArrayRight.push(...[up[0], down[0], left[0], right[0]]);
+      gArrayRight.push(...[up[1], down[1], left[1], right[1]]);
+      bArrayRight.push(...[up[2], down[2], left[2], right[2]]);
+    }
+    // rgb averages
+    var r = averageColor(rArrayRight);
+    var g = averageColor(gArrayRight);
+    var b = averageColor(bArrayRight);
+    var rightEyeColor = `rgb(${r}, ${g}, ${b})`;
+    // set right eye background color and html
+    document.getElementById('right-eye').innerHTML = rightEyeColor;
+    document.getElementById('right-eye-box').style.backgroundColor = rightEyeColor;
+
   }
 }
 
